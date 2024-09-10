@@ -1,0 +1,37 @@
+{
+  "name": "goals",
+  "version": "1.0.0",
+  "main": "src/http/server.ts",
+  "engines": {
+    "node": "",
+    "npm": ""
+  },
+  "scripts": {
+    "start": "tsx src/http/server.ts",
+    "dev": "tsx watch --env-file .env src/http/server.ts",
+    "migration:create": "npx drizzle-kit generate",
+    "migration:run": "npx drizzle-kit migrate",
+    "migration:view": "npx drizzle-kit studio",
+    "seed": "tsx --env-file .env src/db/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/node": "^22.5.4",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.2",
+    "dayjs": "^1.11.13",
+    "drizzle-kit": "^0.24.2",
+    "drizzle-orm": "^0.33.0",
+    "fastify": "^4.28.1",
+    "fastify-type-provider-zod": "^2.0.0",
+    "postgres": "^3.4.4",
+    "zod": "^3.23.8"
+  }
+}
