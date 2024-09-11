@@ -1,67 +1,30 @@
 import fastify from "fastify";
-import { createGoal } from "src/features/create-goal";
-import z from "zod";
 import {
   serializerCompiler,
   validatorCompiler,
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
-import { getWeekPendingGoals } from "src/features/get-week-pending-goals";
-import { createGoalCompletion } from "src/features/create-gol-completion";
+import { createGoalRoute } from "src/routes/create-goal";
+import { createCompletionGoalRoute } from "src/routes/create-completion-goal";
+import { getPendingGoalRoute } from "src/routes/get-pending-goals";
+import { mainRoute } from "src/routes";
+import { getSummaryRoute } from "src/routes/get-week-summary";
+import fastifyCors from "@fastify/cors";
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
+
+app.register(fastifyCors, {
+  origin: "*",
+});
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
-app.get("/", (req, res) => {
-  res.status(200).send("Bem vindo ao Goals!");
-});
-
-app.get("/pending-goals", async (req, res) => {
-  const { pendingGoals } = await getWeekPendingGoals();
-
-  return { pendingGoals };
-});
-
-app.post(
-  "/goals",
-  {
-    schema: {
-      body: z.object({
-        title: z.string(),
-        description: z.string().nullable().nullish(),
-        desiredWeeklyFrequency: z.number().int().min(1).max(7),
-      }),
-    },
-  },
-  async (req, res) => {
-    const { title, description, desiredWeeklyFrequency } = req.body;
-
-    await createGoal({
-      title,
-      description,
-      desiredWeeklyFrequency,
-    }).catch(() => console.error("Não foi possível criar meta."));
-  }
-);
-
-app.post(
-  "/completions",
-  {
-    schema: {
-      body: z.object({
-        goalId: z.string(),
-      }),
-    },
-  },
-  async (req, res) => {
-    const { goalId } = req.body;
-    await createGoalCompletion(goalId);
-
-    return { message: `Goal ${goalId} successfully updated!`};
-  }
-);
+app.register(mainRoute);
+app.register(createGoalRoute);
+app.register(createCompletionGoalRoute);
+app.register(getPendingGoalRoute);
+app.register(getSummaryRoute);
 
 app
   .listen({
