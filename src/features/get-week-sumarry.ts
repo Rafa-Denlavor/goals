@@ -1,6 +1,6 @@
 import { count } from "console";
 import dayjs from "dayjs";
-import { and, eq, gte, lte, sql } from "drizzle-orm";
+import { and, eq, gte, lte, sql, desc } from "drizzle-orm";
 import { db } from "src/db";
 import { goals, goalsCompletions } from "src/db/schema";
 
@@ -60,6 +60,7 @@ export async function getWeekSummary() {
       })
       .from(goalsCompletedInWeek)
       .groupBy(goalsCompletedInWeek.completedAtDate)
+      .orderBy(desc(goalsCompletedInWeek.completedAtDate))
   );
 
   const result = await db
