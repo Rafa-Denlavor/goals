@@ -53,6 +53,7 @@ export async function getWeekSummary() {
         JSON_AGG(
           JSON_BUILD_OBJECT(
             'id', ${goalsCompletedInWeek.id},
+            'description', ${goalsCompletedInWeek.description},
             'title', ${goalsCompletedInWeek.title},
             'completedAt', ${goalsCompletedInWeek.completedAt}
           )
