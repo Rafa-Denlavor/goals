@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O **Goals** é um aplicativo monolítico que combina um backend desenvolvido em Fastify e um frontend em React para o gerenciamento de metas semanais. Ele permite que os usuários cadastrem, acompanhem e atualizem suas metas, oferecendo uma experiência simples e intuitiva.
+O **Goals Backend** é um servidor desenvolvido em Fastify para o gerenciamento de metas semanais. Ele permite que os usuários cadastrem, acompanhem e atualizem suas metas, oferecendo uma experiência simples e intuitiva.
 
 ## Funcionalidades
 
@@ -14,20 +14,11 @@ O **Goals** é um aplicativo monolítico que combina um backend desenvolvido em 
 
 ## Tecnologias Utilizadas
 
-### Backend
-
 - **Linguagem:** TypeScript
 - **Framework:** Fastify
 - **ORM:** Drizzle ORM
 - **Validação:** Zod
 - **Banco de Dados:** PostgreSQL
-
-### Frontend
-
-- **Linguagem:** JavaScript/TypeScript
-- **Framework:** React
-- **Estilização:** CSS / Tailwind / Styled Components (especifique o que você usou)
-- **Comunicação com o backend:** Axios / Fetch API
 
 ## Instalação
 
