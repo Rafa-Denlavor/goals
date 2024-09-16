@@ -4,7 +4,7 @@ import { and, eq, gte, lte, sql, desc, asc } from "drizzle-orm";
 import { db } from "src/db";
 import { goals, goalsCompletions } from "src/db/schema";
 
-type TGoalsPerDay = Record<string, { id: string; title: string; createdAt: string }[]>;
+type TGoalsPerDay = Record<string, { id: string; title: string; description: string; createdAt: string }[]>;
 
 export async function getWeekSummary() {
   const firstDayOfWeek = dayjs().startOf("week").toDate();
