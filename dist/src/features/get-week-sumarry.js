@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getWeekSummary = getWeekSummary;
 const dayjs_1 = __importDefault(require("dayjs"));
 const drizzle_orm_1 = require("drizzle-orm");
-const db_1 = require("src/db");
-const schema_1 = require("src/db/schema");
+const db_1 = require("../db");
+const schema_1 = require("../db/schema");
 async function getWeekSummary() {
     const firstDayOfWeek = (0, dayjs_1.default)().startOf("week").toDate();
     const lastDayOfWeek = (0, dayjs_1.default)().endOf("week").toDate();

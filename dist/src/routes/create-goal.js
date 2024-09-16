@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createGoalRoute = void 0;
-const create_goal_1 = require("src/features/create-goal");
+const create_goal_1 = require("../features/create-goal");
 const zod_1 = require("zod");
 const createGoalRoute = async (app, _options) => {
     app.post("/goals", {

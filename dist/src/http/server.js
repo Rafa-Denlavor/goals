@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
 const fastify_type_provider_zod_1 = require("fastify-type-provider-zod");
-const create_goal_1 = require("src/routes/create-goal");
-const create_completion_goal_1 = require("src/routes/create-completion-goal");
-const get_pending_goals_1 = require("src/routes/get-pending-goals");
-const routes_1 = require("src/routes");
-const get_week_summary_1 = require("src/routes/get-week-summary");
+const create_goal_1 = require("../routes/create-goal");
+const create_completion_goal_1 = require("../routes/create-completion-goal");
+const get_pending_goals_1 = require("../routes/get-pending-goals");
+const routes_1 = require("../routes");
+const get_week_summary_1 = require("../routes/get-week-summary");
 const cors_1 = __importDefault(require("@fastify/cors"));
 const app = (0, fastify_1.default)().withTypeProvider();
 app.register(cors_1.default, {

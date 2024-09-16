@@ -1,4 +1,4 @@
-import { db } from "src/db";
+import { db } from "../db";
 import { goals } from "../db/schema";
 
 interface CreateGoalRequest {
