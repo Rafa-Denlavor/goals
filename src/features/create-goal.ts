@@ -1,5 +1,5 @@
 import { db } from "src/db";
-import { goals } from "src/db/schema";
+import { goals } from "../db/schema";
 
 interface CreateGoalRequest {
   title: string;

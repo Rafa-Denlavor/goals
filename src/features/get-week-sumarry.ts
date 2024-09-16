@@ -1,8 +1,8 @@
 import { count } from "console";
 import dayjs from "dayjs";
 import { and, eq, gte, lte, sql, desc, asc } from "drizzle-orm";
-import { db } from "src/db";
-import { goals, goalsCompletions } from "src/db/schema";
+import { db } from "../db";
+import { goals, goalsCompletions } from "../db/schema";
 
 type TGoalsPerDay = Record<string, { id: string; title: string; description: string; createdAt: string }[]>;
 

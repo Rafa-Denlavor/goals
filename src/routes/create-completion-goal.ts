@@ -1,5 +1,5 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
-import { createGoalCompletion } from "src/features/create-gol-completion";
+import { createGoalCompletion } from "../features/create-goal-completion";
 import { z } from "zod";
 
 export const createCompletionGoalRoute: FastifyPluginAsyncZod = async (
