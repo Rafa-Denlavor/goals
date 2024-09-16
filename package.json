@@ -9,7 +9,7 @@
   "scripts": {
     "start": "tsx src/http/server.ts",
     "build": "tsc",
-    "vercel-build": "tsc && npx drizzle-kit migrate",
+    "vercel-build": "npx drizzle-kit migrate",
     "dev": "tsx watch --env-file .env src/http/server.ts",
     "migration:create": "npx drizzle-kit generate",
     "migration:run": "npx drizzle-kit migrate",
