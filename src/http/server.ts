@@ -1,4 +1,5 @@
 import fastify from "fastify";
+import fastifyCors from "@fastify/cors";
 import {
   serializerCompiler,
   validatorCompiler,
@@ -9,7 +10,7 @@ import { createCompletionGoalRoute } from "../routes/create-completion-goal";
 import { getPendingGoalRoute } from "../routes/get-pending-goals";
 import { mainRoute } from "../routes";
 import { getSummaryRoute } from "../routes/get-week-summary";
-import fastifyCors from "@fastify/cors";
+import { loginRoute } from '../routes/login';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -25,6 +26,7 @@ app.register(createGoalRoute);
 app.register(createCompletionGoalRoute);
 app.register(getPendingGoalRoute);
 app.register(getSummaryRoute);
+app.register(loginRoute);
 
 app
   .listen({
