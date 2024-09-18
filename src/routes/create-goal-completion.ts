@@ -7,7 +7,7 @@ export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
   _options
 ) => {
   app.post(
-    "/completions",
+    "/completion",
     {
       schema: {
         body: z.object({
@@ -19,7 +19,7 @@ export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
       const { goalId } = req.body;
       await createGoalCompletion(goalId);
 
-      return { message: `Goal ${goalId} successfully updated!` };
+       return res.status(201).send({ message: `Goal ${goalId} successfully updated!` });
     }
   );
 };
