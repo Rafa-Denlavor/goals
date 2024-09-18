@@ -8,9 +8,13 @@ export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
     {
       schema: {
         body: z.object({
-          title: z.string(),
+          title: z.string().nonempty({ message: 'O título é obrigatório.' }),
           description: z.string().nullable().nullish(),
-          desiredWeeklyFrequency: z.number().int().min(1).max(7),
+          desiredWeeklyFrequency:
+            z.number()
+            .int()
+            .min(1, { message: 'A frequência semanal deve ter no mínimo 1 dia'})
+            .max(7,  { message: 'A frequência semanal deve ter no máximo 7 dias' })
         }),
       },
     },
@@ -21,7 +25,7 @@ export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
         title,
         description,
         desiredWeeklyFrequency,
-      }).catch(() => {
+      }).catch((err) => {
         throw new Error("Unable to create goal");
       });
 

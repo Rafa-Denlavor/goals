@@ -43,6 +43,13 @@
       "when": 1726522337987,
       "tag": "0005_fat_gambit",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1726677690474,
+      "tag": "0006_eminent_firelord",
+      "breakpoints": true
     }
   ]
 }

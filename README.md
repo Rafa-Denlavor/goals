@@ -18,3 +18,4 @@ O **Goals Backend** é um servidor desenvolvido em Fastify para o gerenciamento 
 - **ORM:** Drizzle ORM
 - **Validação:** Zod
 - **Banco de Dados:** PostgreSQL
+- **REST API Testing**: Hoppscotch

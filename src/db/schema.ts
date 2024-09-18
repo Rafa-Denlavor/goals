@@ -33,6 +33,8 @@ export const users = pgTable("users", {
   name: text("name").notNull(),
   username: text("username").notNull(),
   password: text("password").notNull(),
+  avatar: text("avatar"),
+  motivationalPhrase: text("motivational_phrase"),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),
