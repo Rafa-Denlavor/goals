@@ -1,5 +1,6 @@
 import { db } from "../db";
 import { users } from "../db/schema";
+import { eq } from "drizzle-orm";
 
 interface CreateUserRequest {
   username: string,
@@ -12,6 +13,15 @@ export async function createUser({
   name,
   password,
 }: CreateUserRequest) {
+
+
+  const hasUser = await db.select().from(users)
+  .where(eq(users.username, username));
+
+  if(hasUser.length > 0) {
+    return { message: 'Username already exists' };
+  }
+
   const result = await db
     .insert(users)
     .values({ username, name, password })

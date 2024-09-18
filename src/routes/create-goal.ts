@@ -24,6 +24,8 @@ export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
       }).catch(() => {
         throw new Error("Unable to create goal");
       });
+
+      return res.status(201).send();
     }
   );
 };

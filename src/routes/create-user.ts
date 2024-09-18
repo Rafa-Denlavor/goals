@@ -11,7 +11,7 @@ export const createUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
           username: z.string()
             .min(1)
             .max(30)
-            .regex(/^[a-zA-Z0-9_-]+$/)
+            .regex(/^[a-zA-Z0-9_.-]+$/)
             .trim()
             .nonempty(),
           name: z.string().max(30).nonempty(),
@@ -26,13 +26,20 @@ export const createUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
     async (req, res) => {
       const { username, name, password } = req.body;
 
-      await createUser({
+      const { message } = await createUser({
         username,
         name,
         password,
       }).catch(() => {
         throw new Error("Unable to create user");
       });
+
+      if(message) {
+        res.status(400).send({ message })
+      }
+
+      return res.status(201).send();
+
     }
   );
 };
