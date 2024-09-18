@@ -4,7 +4,7 @@ import { z } from "zod";
 
 export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
   app.post(
-    "/goals",
+    "/goal",
     {
       schema: {
         body: z.object({
