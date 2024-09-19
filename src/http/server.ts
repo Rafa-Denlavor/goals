@@ -5,6 +5,8 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
+import { mainRoute } from "../routes";
+import { loginRoute } from '../routes/login';
 import { getUserRoute } from '../routes/get-user';
 import { createUserRoute } from '../routes/create-user';
 import { deleteUserRoute } from '../routes/delete-user';
@@ -13,9 +15,7 @@ import { deleteGoalRoute } from "../routes/delete-goal";
 import { createGoalCompletionRoute } from "../routes/create-goal-completion";
 import { deleteGoalCompletionRoute } from '../routes/delete-goal-completion';
 import { getPendingGoalRoute } from "../routes/get-pending-goals";
-import { mainRoute } from "../routes";
 import { getSummaryRoute } from "../routes/get-week-summary";
-import { loginRoute } from '../routes/login';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
