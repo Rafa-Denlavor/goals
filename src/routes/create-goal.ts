@@ -1,6 +1,7 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { createGoal } from "../features/create-goal";
 import { z } from "zod";
+import { verifyJWT } from '../middlewares/verifyJWT';
 
 export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
   app.post(
@@ -17,6 +18,7 @@ export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
             .max(7,  { message: 'A frequência semanal deve ter no máximo 7 dias' })
         }),
       },
+      preHandler: [verifyJWT]
     },
     async (req, res) => {
       const { title, description, desiredWeeklyFrequency } = req.body;

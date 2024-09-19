@@ -1,9 +1,12 @@
 import fastify from "fastify";
+import fastifyCors from "@fastify/cors";
 import {
   serializerCompiler,
   validatorCompiler,
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
+import { mainRoute } from "../routes";
+import { loginRoute } from '../routes/login';
 import { getUserRoute } from '../routes/get-user';
 import { createUserRoute } from '../routes/create-user';
 import { deleteUserRoute } from '../routes/delete-user';
@@ -12,9 +15,11 @@ import { deleteGoalRoute } from "../routes/delete-goal";
 import { createGoalCompletionRoute } from "../routes/create-goal-completion";
 import { deleteGoalCompletionRoute } from '../routes/delete-goal-completion';
 import { getPendingGoalRoute } from "../routes/get-pending-goals";
-import { mainRoute } from "../routes";
 import { getSummaryRoute } from "../routes/get-week-summary";
-import fastifyCors from "@fastify/cors";
+<<<<<<< HEAD
+=======
+import { loginRoute } from '../routes/login';
+>>>>>>> ae7e23421b51578d4a156b153049d16e83f20b15
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -35,6 +40,7 @@ app.register(createGoalCompletionRoute);
 app.register(deleteGoalCompletionRoute);
 app.register(getPendingGoalRoute);
 app.register(getSummaryRoute);
+app.register(loginRoute);
 
 app
   .listen({

@@ -1,6 +1,7 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { createGoalCompletion } from "../features/create-goal-completion";
 import { z } from "zod";
+import { verifyJWT } from '../middlewares/verifyJWT';
 
 export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
   app,
@@ -14,6 +15,7 @@ export const createGoalCompletionRoute: FastifyPluginAsyncZod = async (
           goalId: z.string(),
         }),
       },
+      preHandler: [verifyJWT]
     },
     async (req, res) => {
       const { goalId } = req.body;

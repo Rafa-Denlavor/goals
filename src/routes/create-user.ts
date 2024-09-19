@@ -1,6 +1,8 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { createUser } from "../features/create-user";
 import { z } from "zod";
+import { verifyJWT } from '../middlewares/verifyJWT';
+
 export const createUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
   app.post(
     "/user",
@@ -21,6 +23,7 @@ export const createUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
             .regex(/[^a-zA-Z0-9]/, 'A senha deve conter pelo menos um caractere especial')
         }),
       },
+      preHandler: [verifyJWT]
     },
     async (req, res) => {
       const { username, name, password } = req.body;

@@ -1,15 +1,18 @@
 import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import { getUser } from "../features/get-user";
 import { z } from "zod";
+import { verifyJWT } from '../middlewares/verifyJWT';
+
 export const getUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
   app.get("/user",
-  // {
-  //   schema: {
-  //     params: z.object({
-  //       id: z.string().nonempty({ message: 'ID é obrigatório'})
-  //     })
-  //   }
-  // },
+  {
+    schema: {
+      params: z.object({
+        id: z.string().nonempty({ message: 'ID é obrigatório'})
+      })
+    },
+    preHandler: [verifyJWT]
+  },
   async (req, res) => {
     const { id } = req.query;
     const user = await getUser(id).catch(() => {
