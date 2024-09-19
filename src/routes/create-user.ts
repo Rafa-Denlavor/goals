@@ -23,8 +23,9 @@ export const createUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
       },
     },
     async (req, res) => {
-      const { username, name, password } = req.body;
+      const { email, username, name, password } = req.body;
       const { message } = await createUser({
+        email,
         username,
         name,
         password,

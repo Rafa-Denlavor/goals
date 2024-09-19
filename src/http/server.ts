@@ -14,7 +14,11 @@ import { deleteGoalCompletionRoute } from '../routes/delete-goal-completion';
 import { getPendingGoalRoute } from "../routes/get-pending-goals";
 import { mainRoute } from "../routes";
 import { getSummaryRoute } from "../routes/get-week-summary";
+<<<<<<< Updated upstream
 import fastifyCors from "@fastify/cors";
+=======
+import { loginRoute } from '../routes/login';
+>>>>>>> Stashed changes
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
