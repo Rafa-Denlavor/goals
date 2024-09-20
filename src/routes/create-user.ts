@@ -22,8 +22,7 @@ export const createUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
             .regex(/[0-9]/, 'A senha deve conter pelo menos um número')
             .regex(/[^a-zA-Z0-9]/, 'A senha deve conter pelo menos um caractere especial')
         }),
-      },
-      preHandler: [verifyJWT]
+      }
     },
     async (req, res) => {
       const { email, username, name, password } = req.body;
