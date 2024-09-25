@@ -2,6 +2,8 @@ import type { FastifyPluginAsyncZod } from "fastify-type-provider-zod";
 import jwt from 'jsonwebtoken';
 import { verifyUser } from '../features/verify-user';
 
+const ONE_DAY = 86400;
+
 export const loginRoute: FastifyPluginAsyncZod = async (
   app,
   _options
@@ -16,8 +18,8 @@ export const loginRoute: FastifyPluginAsyncZod = async (
     const { hasUser, userInfo } = await verifyUser(username, password);
 
     if(hasUser) {
-      const { userId, username } = userInfo;
-      const token = jwt.sign({ userId, username }, process.env.JWT_SECRET, { expiresIn: 100 });
+      const { id, username } = userInfo;
+      const token = jwt.sign({ userId: id, username }, process.env.JWT_SECRET, { expiresIn: ONE_DAY });
 
       res.status(200).send({
         message: 'Authenticated user',

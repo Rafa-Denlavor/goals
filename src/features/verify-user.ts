@@ -14,5 +14,5 @@ export async function verifyUser(username : string, password: string) {
     return { hasUser: false }
   }
 
-  return { hasUser: true, userInfo: user };
+  return { hasUser: true, userInfo: user[0] };
 }

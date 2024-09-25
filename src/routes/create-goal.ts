@@ -27,6 +27,7 @@ export const createGoalRoute: FastifyPluginAsyncZod = async (app, _options) => {
         title,
         description,
         desiredWeeklyFrequency,
+        userId: req.userId
       }).catch(() => {
         throw new Error("Unable to create goal");
       });
