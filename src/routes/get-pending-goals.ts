@@ -8,7 +8,7 @@ export const getPendingGoalRoute: FastifyPluginAsyncZod = async (app, _options) 
     preHandler: [verifyJWT]
   },
   async (req, res) => {
-    const { pendingGoals } = await getWeekPendingGoals();
+    const { pendingGoals } = await getWeekPendingGoals(req.userId);
 
     return { pendingGoals };
   });

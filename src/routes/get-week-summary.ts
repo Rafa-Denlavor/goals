@@ -9,7 +9,7 @@ export const getSummaryRoute: FastifyPluginAsyncZod = async (app, _options) => {
     preHandler: [verifyJWT]
   },
   async (req, res) => {
-    const { summary } = await getWeekSummary();
+    const { summary } = await getWeekSummary(req.userId);
 
     return { summary };
   });

@@ -5,7 +5,7 @@ import { goals, goalsCompletions } from "../db/schema";
 
 type TGoalsPerDay = Record<string, { id: string; title: string; description: string; createdAt: string }[]>;
 
-export async function getWeekSummary() {
+export async function getWeekSummary(userId: string) {
   const firstDayOfWeek = dayjs().startOf("week").toDate();
   const lastDayOfWeek = dayjs().endOf("week").toDate();
 
@@ -19,7 +19,7 @@ export async function getWeekSummary() {
         createdAt: goals.createdAt,
       })
       .from(goals)
-      .where(lte(goals.createdAt, lastDayOfWeek))
+      .where(and(lte(goals.createdAt, lastDayOfWeek), eq(goals.userId, userId)))
   );
 
   const goalsCompletedInWeek = db.$with("goal_completion_counts").as(
