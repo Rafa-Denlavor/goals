@@ -6,15 +6,11 @@ import { verifyJWT } from '../middlewares/verifyJWT';
 export const getUserRoute: FastifyPluginAsyncZod = async (app, _options) => {
   app.get("/user",
   {
-    schema: {
-      params: z.object({
-        id: z.string().nonempty({ message: 'ID é obrigatório'})
-      })
-    },
     preHandler: [verifyJWT]
   },
   async (req, res) => {
-    const { id } = req.query;
+    console.log(req.userId);
+    const id = req.query.id ?? req.userId;
     const user = await getUser(id).catch(() => {
       return res.status(400).send({ message: 'There was an error querying the user'})
     });
