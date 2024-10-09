@@ -1,16 +1,10 @@
-# Goals
+# **Meta Certa Service**  
+**Descrição curta**: Servidor desenvolvido em Fastify para o gerenciamento de metas semanais.
 
-Servidor desenvolvido em Fastify para o gerenciamento de metas semanais. Ele permite que os usuários adicionem, acompanhem e atualizem suas metas, oferecendo uma experiência simples e intuitiva.
+## 🚀 **Visão Geral**
+Este website faz parte de uma iniciativa para democratizar para pessoas com pouca experiência o acesso a ferramentas de edições. Atualmente o PolarizeMe apenas gera e edita fotos polaroides, no entanto, a longo prazo haverá outras funcionalidades.
 
-## Funcionalidades
-
-- Cadastro de metas semanais com título, descrição e frequência.
-- Atualização e exclusão de metas.
-- Histórico de .
-- Conclusão de metas
-
-## Tecnologias Utilizadas
-
+## 🔧 **Tecnologias Utilizadas**
 - **Linguagem:** TypeScript
 - **Framework:** Fastify
 - **ORM:** Drizzle ORM
@@ -27,3 +21,50 @@ Servidor desenvolvido em Fastify para o gerenciamento de metas semanais. Ele per
 - [ ] Utilizar do Authorization pra identificar para qual usuário devesse criar a meta
 - [ ] Escolher um Design Pattern para padronização do código-fonte
 
+## 📂 **Estrutura do Projeto**
+```
+  raiz/
+  ├── src/                   # Código-fonte principal
+  ├──── db/                  # Schemas do banco de dados e uma seed
+  ├──── features/            # Métodos para recuperar os dados do banco
+  ├──── http/                # Inicialização do servidor
+  ├──── middlewares/         # Métodos reutilizados nas rotas
+  ├──── routes/              # Criação das rotas e regras de negócio
+  ├── .migrations/           # Arquivos que irão alterar o banco 
+  ├── .vercel/               # Necessário para hospedar o site               
+  └── README.md              # Esse arquivo
+```
+
+## ⚙️ **Instalação e Configuração**
+### Pré-requisitos
+- Node.js v20
+- NPM.js v10
+
+### Passo a passo para rodar o projeto:
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Rafa-Denlavor/meta-certa-service-web.git
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Inicie o servidor local:
+   ```bash
+   npm run dev
+   ```
+4. Inicie o container:
+   ```bash
+   docker compose up
+   ```
+
+<!-- ## 🧪 **Testes**
+Para rodar os testes, execute:
+```bash
+npm test
+``` -->
+
+## 📞 **Contato**
+Tem perguntas? Entre em contato com a gente:
+- **Email**: rafinhacrisdenlavor@gmail.com
+- **Site**: [https://denlavor.vercel.app)
